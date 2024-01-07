@@ -18,9 +18,7 @@ pipeline {
         }
 
         stage('Build API') {
-            when {
-                changeset "**/api/**/*.*"
-            }
+            
             steps {
                 dir('api') {
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/api:$BUILD_ID .'
@@ -32,9 +30,7 @@ pipeline {
         }
 
         stage('Build Client') {
-            when {
-                changeset "**/client/**/*.*"
-            }
+            
             steps {
                 dir('client') {
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID .'
