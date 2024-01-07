@@ -1,12 +1,23 @@
-# Stage 1: Build Node.js app
+# Use an official Node.js runtime as a parent image
 FROM node:18-alpine AS builder
-WORKDIR /app
-COPY package.json .
-RUN npm install
-COPY . .
-RUN npm run build
 
-# Stage 2: Serve the built app with Nginx
-FROM nginx
-COPY --from=builder /app/build /usr/share/nginx/html
-CMD ["nginx", "-g", "daemon off;"]
+# Set the working directory in the container to /app
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install the client dependencies
+RUN npm install
+
+# Copy the current directory contents into the container at /app
+COPY . .
+
+# Expose port 3000 to the outside world
+EXPOSE 3000
+
+# Define environment variable (if needed)
+# ENV REACT_APP_CUSTOM_VARIABLE value
+
+# Run the application
+CMD ["npm", "start"]
