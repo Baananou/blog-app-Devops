@@ -20,4 +20,4 @@ EXPOSE 8800
 # ENV NODE_ENV production
 
 # Run the application
-# CMD ["npm", "start"]
+CMD ["npm", "start"]
