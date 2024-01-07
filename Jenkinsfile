@@ -18,14 +18,13 @@ pipeline {
         }
 
         stage('Build API') {
-            
+
             steps {
                 dir('api') {
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/api:$BUILD_ID .'
                     sh 'docker push $DOCKERHUB_CREDENTIALS_USR/api:$BUILD_ID'
                     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/api:$BUILD_ID'
                 }
-                sh 'Build Client Done'
 
             }
         }
