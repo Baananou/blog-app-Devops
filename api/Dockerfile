@@ -2,7 +2,7 @@
 FROM node:18-alpine
 
 # Set the working directory in the container to /app
-WORKDIR /app/api
+WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
@@ -20,4 +20,4 @@ EXPOSE 8800
 # ENV NODE_ENV production
 
 # Run the application
-CMD ["node", "start"]
+CMD ["npm", "start"]
