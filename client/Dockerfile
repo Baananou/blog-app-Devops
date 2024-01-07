@@ -19,5 +19,5 @@ EXPOSE 3000
 # Define environment variable (if needed)
 # ENV REACT_APP_CUSTOM_VARIABLE value
 
-# Run the application
-CMD ["npm", "start"]
+# Run Build
+CMD ["npm", "build"]
