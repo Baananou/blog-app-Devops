@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: project
+  name: backend
+spec:
+  strategy :
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: baananou/api:tagname:33
+        ports:
+        - containerPort: 8800
+        env :
+          - name : DB_HOST
+            value : localhost
+          - name: DB_USER
+            value : root
+          - name : DB_PASSWORD
+            value: ""
+          - name : DB_DATABASE
+            value: blog
