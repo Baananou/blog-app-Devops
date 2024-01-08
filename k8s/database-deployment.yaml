@@ -18,9 +18,8 @@ spec:
       - image: mysql:8.0.31
         name: mysql
         env:
-        - name: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
           value: ""
-        - name : MYSQL_ALLOW_EMPTY_PASSWORD
         - name : MYSQL_DATABASE
           value: blog
         - name : MYSQL_USR
