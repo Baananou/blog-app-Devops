@@ -4,6 +4,9 @@ FROM node:18-alpine
 # Set the working directory in the container to /app
 WORKDIR /app
 
+# Update Browserslist caniuse-lite database
+RUN npx browserslist@latest --update-db
+
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json .
 
@@ -20,4 +23,4 @@ EXPOSE 3000
 # ENV REACT_APP_CUSTOM_VARIABLE value
 
 # Run Build
-CMD ["npm","run","build"]
+CMD ["npm", "run", "build"]
