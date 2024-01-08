@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: baananou/client:6
+        image: baananou/client:12
         ports:
         - containerPort: 3000
