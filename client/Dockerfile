@@ -20,4 +20,4 @@ EXPOSE 3000
 # ENV REACT_APP_CUSTOM_VARIABLE value
 
 # Run Build
-CMD ["npm", "build"]
+CMD ["npm","run","build"]
