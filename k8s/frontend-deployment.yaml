@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: sofienech/client:8
+        image: baananou/client:8
         ports:
         - containerPort: 80

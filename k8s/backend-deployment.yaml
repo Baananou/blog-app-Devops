@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: sofienech/api:7
+        image: baananou/api:7
         ports:
         - containerPort: 8800
         env :
