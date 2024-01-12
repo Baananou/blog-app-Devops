@@ -1,24 +1,17 @@
-# Stage 1: Build the Node.js application
-FROM node:18-alpine AS build
-
+# build environment
+FROM node:12.2.0-alpine as build
 WORKDIR /app
 
-COPY package.json ./
-
-# Set DNS server to Google's public DNS
-RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
-
-RUN npm install
-
-COPY . .
-
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json /app/package.json
+RUN npm install --silent
+RUN npm config set unsafe-perm true #https://stackoverflow.com/questions/52196518/could-not-get-uid-gid-when-building-node-docker
+RUN npm install react-scripts@3.0.1 -g --silent
+COPY . /app
 RUN npm run build
 
-# Stage 2: Serve the application using Nginx
-FROM nginx:1.21-alpine
-
+# production environment
+FROM nginx:1.16.0-alpine
 COPY --from=build /app/build /usr/share/nginx/html
-
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
