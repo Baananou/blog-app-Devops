@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: baananou/api:7
+        image: baananou/api:20
         ports:
         - containerPort: 8800
         env :
